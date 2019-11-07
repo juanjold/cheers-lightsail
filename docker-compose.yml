@@ -6,7 +6,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - "./data-volume:/app/code:rw"
+      - "./data-volume:/app/cheers-webservice/code:rw"
     links:
       - redis
       - celery
@@ -20,7 +20,7 @@ services:
     build: .
     command: celery -A courier_work.celery worker
     volumes:
-      - '.:/app/celery'
+      - '.:/app/cheers-webservice/celery'
     links:
       - redis
     depends_on:
