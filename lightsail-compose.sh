@@ -14,8 +14,9 @@ chmod +x /usr/local/bin/docker-compose
 # if you change this, change the systemd service file to match
 # WorkingDirectory=[whatever you have below]
 mkdir /app/
-curl -o /app/cheers-webservice/Dockerfile https://raw.githubusercontent.com/juanjold/cheers-lightsail/master/Dockerfile
-curl -o /app/cheers-webservice/docker-compose.yml https://raw.githubusercontent.com/juanjold/cheers-lightsail/master/docker-compose.yml
+mkdir /app/cheers-webserver/
+curl -o /app/cheers-webserver/Dockerfile https://raw.githubusercontent.com/juanjold/cheers-lightsail/master/Dockerfile
+curl -o /app/cheers-webserver/docker-compose.yml https://raw.githubusercontent.com/juanjold/cheers-lightsail/master/docker-compose.yml
 
 # copy in systemd unit file and register it so our compose file runs 
 # on system restart
@@ -23,4 +24,4 @@ curl -o /etc/systemd/system/docker-compose-app.service https://raw.githubusercon
 systemctl enable docker-compose-app
 
 # start up the application via docker-compose
-docker-compose -f /app/cheers-webservice/docker-compose.yml up -d
+docker-compose -f /app/cheers-webserver/docker-compose.yml up -d

@@ -1,6 +1,6 @@
 FROM python:3.6
-COPY . /app/cheers-webservice
-WORKDIR /app/cheers-webservice
+COPY . /app/cheers-webserver
+WORKDIR /app/cheers-webserver
 RUN pip install -r requirements.txt
 EXPOSE 5000
 #CMD python3 server.py 
