@@ -13,7 +13,12 @@ services:
   nginx:
     build: ./code/docker/prod/nginx
     ports:
-      - "8000:8888"
+      - "80:8888"
+      - "443:443"
+    volumes:
+      - ./dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
+      - /docker-volumes/etc/letsencrypt/live/belit.mobi/fullchain.pem:/etc/letsencrypt/live/belit.mobi/fullchain.pem
+      - /docker-volumes/etc/letsencrypt/live/belit.mobi/privkey.pem:/etc/letsencrypt/live/belit.mobi/privkey.pem
     depends_on:
       - web
   celery:
