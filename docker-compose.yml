@@ -13,7 +13,7 @@ services:
   nginx:
     build: ./code/docker/prod/nginx
     ports:
-      - "80:8888"
+      - "80:80"
       - "443:443"
     volumes:
       - ./dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
