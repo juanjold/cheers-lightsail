@@ -11,6 +11,7 @@ services:
       - redis
       - celery
   nginx:
+    container_name: 'production-nginx-container'
     build: ./code/docker/prod/nginx
     ports:
       - "80:80"
@@ -19,6 +20,7 @@ services:
       - ./dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
       - /docker-volumes/etc/letsencrypt/live/belit.mobi/fullchain.pem:/etc/letsencrypt/live/belit.mobi/fullchain.pem
       - /docker-volumes/etc/letsencrypt/live/belit.mobi/privkey.pem:/etc/letsencrypt/live/belit.mobi/privkey.pem
+      - /docker-volumes/data/letsencrypt:/data/letsencrypt
     depends_on:
       - web
   celery:
