@@ -21,7 +21,7 @@ services:
       - /docker-volumes/etc/letsencrypt/live/belit.mobi/fullchain.pem:/etc/letsencrypt/live/belit.mobi/fullchain.pem
       - /docker-volumes/etc/letsencrypt/live/belit.mobi/privkey.pem:/etc/letsencrypt/live/belit.mobi/privkey.pem
       - /docker-volumes/data/letsencrypt:/data/letsencrypt
-      - /images:/usr/share/nginx/html/images
+      - /images:/static/images
     depends_on:
       - web
   celery:
