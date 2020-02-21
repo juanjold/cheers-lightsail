@@ -22,7 +22,7 @@ services:
       - /docker-volumes/etc/letsencrypt/live/belit.mobi/privkey.pem:/etc/letsencrypt/live/belit.mobi/privkey.pem
       - /docker-volumes/data/letsencrypt:/data/letsencrypt
       - type: bind
-        source: /images
+        source: ./images
         target: /static/images
     depends_on:
       - web

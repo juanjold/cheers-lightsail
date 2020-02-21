@@ -1,6 +1,5 @@
 FROM python:3.6
 COPY . /app/cheers-webserver
-COPY  ./images/ /static/images/
 WORKDIR /app/cheers-webserver
 RUN pip install -r requirements.txt
 EXPOSE 5000
