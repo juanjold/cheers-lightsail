@@ -17,13 +17,21 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
-      - /docker-volumes/etc/letsencrypt/live/belit.mobi/fullchain.pem:/etc/letsencrypt/live/belit.mobi/fullchain.pem
-      - /docker-volumes/etc/letsencrypt/live/belit.mobi/privkey.pem:/etc/letsencrypt/live/belit.mobi/privkey.pem
-      - /docker-volumes/data/letsencrypt:/data/letsencrypt
+      - type: volume
+        source: ./dh-param/dhparam-2048.pem
+        target: /etc/ssl/certs/dhparam-2048.pem
+      - type: volume
+        source: /docker-volumes/etc/letsencrypt/live/belit.mobi/fullchain.pem
+        target: /etc/letsencrypt/live/belit.mobi/fullchain.pem
+      - type: volume
+        source: /docker-volumes/etc/letsencrypt/live/belit.mobi/privkey.pem
+        target: /etc/letsencrypt/live/belit.mobi/privkey.pem
+      - type: volume
+        source: /docker-volumes/data/letsencrypt
+        target: /data/letsencrypt
       - type: bind
         source: /images
-        volume: /static/images
+        target: /static/images
     depends_on:
       - web
   celery:
